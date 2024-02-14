@@ -1,5 +1,5 @@
 let add = function(a,b) {
-	return a+b;
+	return a + b;
 };
 
 let subtract = function(a,b) {
@@ -13,12 +13,11 @@ let multiply = function(a,b) {
 let divide = function(a,b) {
 	return a / b;
 };
-
+//function which takes operator and two operands
 let firstNum;
 let operator;
 let secondNum;
-
-let operation = function(firstNum,secondNum,operator){
+let operate = function(operator,firstNum,secondNum){
     switch (operator){
         case '+':
             return add(firstNum,secondNum);
@@ -32,3 +31,13 @@ let operation = function(firstNum,secondNum,operator){
             return 'Invalid operator';
     }
 }
+let displayValue; //to store the display-value for later use
+//function to populate display when numbers are clicked
+const container = document.getElementById('container');
+const display = document.getElementById('display');
+container.addEventListener('click',(event) => {
+    if(event.target.matches('.operand')){
+        displayValue = event.target.value;
+        display.textContent = displayValue;
+    }
+});
