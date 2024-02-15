@@ -46,16 +46,25 @@ container.addEventListener('click',(event) => {
     if(event.target.matches('.operand') && isSecondNum === 'false') {
         displayValue = event.target.value;
         display.textContent = displayValue;
-        //firstnum-value is stored
+        //var-firstnum-value is stored
         firstNum = parseFloat(displayValue);
-        //switch ready to store 2nd-num
-        isSecondNum = 'true';
     } 
     //function to store operator
     if(event.target.matches('.operator')){
         operator = event.target.value;
         //clear display for 2nd-num;
+        displayValue = '';
+        //switch ready to store 2nd-num
+        isSecondNum = 'true';
     }
+    //function to store & display 2nd num
+    if(event.target.matches('.operand') && isSecondNum === 'true'){
+        displayValue = event.target.value;
+        display.textContent = displayValue;
+        //var-secondNum-value is stored
+        secondNum = parseFloat(displayValue);
+    }
+    if()
 });
 //else if(event.target.matches('#clear')) {
 //    display.textContent = '0';
