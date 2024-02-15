@@ -17,7 +17,10 @@ let divide = function(a,b) {
 let firstNum;
 let operator;
 let secondNum;
-let displayValue; //to store the display-value for later use
+//to store the display-value for 1st,2nd num
+let displayValue; 
+//issecondnum var to use as a swtich
+//to store 1st & 2nd num
 let isSecondNum = 'false';
 
 //function which takes operator and two operands
@@ -36,14 +39,24 @@ let operate = function(op,a,b){
     }
 }
 
-//function to populate display when numbers are clicked
 const container = document.getElementById('container');
 const display = document.getElementById('display');
 container.addEventListener('click',(event) => {
-    if(event.target.matches('.operand') && isSecondNum==='false') {
+    //function to populate display when 1st-number clicked
+    if(event.target.matches('.operand') && isSecondNum === 'false') {
         displayValue = event.target.value;
         display.textContent = displayValue;
-    } else if(event.target.matches('#clear')) {
-        display.textContent = '0';
+        //firstnum-value is stored
+        firstNum = parseFloat(displayValue);
+        //switch ready to store 2nd-num
+        isSecondNum = 'true';
+    } 
+    //function to store operator
+    if(event.target.matches('.operator')){
+        operator = event.target.value;
+        //clear display for 2nd-num;
     }
 });
+//else if(event.target.matches('#clear')) {
+//    display.textContent = '0';
+//}
