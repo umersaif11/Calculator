@@ -42,7 +42,7 @@ let operate = function(op,a,b){
 const container = document.getElementById('container');
 const display = document.getElementById('display');
 container.addEventListener('click',(event) => {
-    //function to populate display when 1st-number clicked
+    //function to store & display 1st-num
     if(event.target.matches('.operand') && isSecondNum === 'false') {
         displayValue = event.target.value;
         display.textContent = displayValue;
@@ -50,10 +50,8 @@ container.addEventListener('click',(event) => {
         firstNum = parseFloat(displayValue);
     } 
     //function to store operator
-    if(event.target.matches('.operator')){
+    if(event.target.matches('.operator') && event.target.value !== '='){
         operator = event.target.value;
-        //clear display for 2nd-num;
-        displayValue = '';
         //switch ready to store 2nd-num
         isSecondNum = 'true';
     }
@@ -64,7 +62,15 @@ container.addEventListener('click',(event) => {
         //var-secondNum-value is stored
         secondNum = parseFloat(displayValue);
     }
-    if()
+    //function to show results of caculation
+    if(event.target.matches('.operator') && event.target.value === '='){
+        let result = operate(operator,firstNum,secondNum);
+        displayValue = result.toString();
+        display.textContent = displayValue;
+        firstNum = secondNum = null;
+        operator = null;
+        isSecondNum = 'false';
+    }
 });
 //else if(event.target.matches('#clear')) {
 //    display.textContent = '0';
