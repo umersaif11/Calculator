@@ -13,31 +13,37 @@ let multiply = function(a,b) {
 let divide = function(a,b) {
 	return a / b;
 };
-//function which takes operator and two operands
+
 let firstNum;
 let operator;
 let secondNum;
-let operate = function(operator,firstNum,secondNum){
-    switch (operator){
+let displayValue; //to store the display-value for later use
+let isSecondNum = 'false';
+
+//function which takes operator and two operands
+let operate = function(op,a,b){
+    switch (op){
         case '+':
-            return add(firstNum,secondNum);
+            return add(a, b);
         case '-':
-            return subtract(firstNum,secondNum);
+            return subtract(a, b);
         case '*':
-            return multiply(firstNum,secondNum);
+            return multiply(a, b);
         case '/':
-            return divide(firstNum,secondNum);
+            return divide(a, b);
         default:
             return 'Invalid operator';
     }
 }
-let displayValue; //to store the display-value for later use
+
 //function to populate display when numbers are clicked
 const container = document.getElementById('container');
 const display = document.getElementById('display');
 container.addEventListener('click',(event) => {
-    if(event.target.matches('.operand')){
+    if(event.target.matches('.operand') && isSecondNum==='false') {
         displayValue = event.target.value;
         display.textContent = displayValue;
+    } else if(event.target.matches('#clear')) {
+        display.textContent = '0';
     }
 });
