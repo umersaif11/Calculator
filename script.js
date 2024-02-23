@@ -33,7 +33,11 @@ let operate = function(op,a,b){
         case '*':
             return multiply(a, b);
         case '/':
-            return divide(a, b);
+            if(b === 0){
+                return "Error: division by zero";
+            } else{
+                return divide(a, b);
+            }
         default:
             return 'Invalid operator';
     }
@@ -65,13 +69,13 @@ container.addEventListener('click',(event) => {
     //function to show results of caculation
     if(event.target.matches('.operator') && event.target.value === '='){
         let result = operate(operator,firstNum,secondNum);
-        displayValue = result.toString();
+        displayValue = result;
         display.textContent = displayValue;
         firstNum = secondNum = null;
         operator = null;
         isSecondNum = 'false';
     }
+    if(event.target.matches('#clear')) {
+        display.textContent = '0';
+    }
 });
-//else if(event.target.matches('#clear')) {
-//    display.textContent = '0';
-//}
