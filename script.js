@@ -41,5 +41,9 @@ let previousResult = null;
 const container = document.getElementById('container');
 const display = document.getElementById('display');
 container.addEventListener('click',(event) => {
-    
+    if (event.target.matches('.operand')){
+        currentOperand += event.target.value;
+        display.textContent = currentOperand;
+        
+}
 });
