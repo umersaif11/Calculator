@@ -44,6 +44,17 @@ container.addEventListener('click',(event) => {
     if (event.target.matches('.operand')){
         currentOperand += event.target.value;
         display.textContent = currentOperand;
-        
+
+} else if (event.target.matches('.operator') && event.target.value !== '='){
+    if (previousOperand !== null){
+        previousResult = operate(operator, previousOperand, parseFloat(currentOperand));
+        previousOperand = previousResult;
+        display.textContent = previousResult;
+    } else {
+        previousOperand = parseFloat(currentOperand);
+    }
+    currentOperand = '';
+    operator = event.target.value;
+
 }
 });
