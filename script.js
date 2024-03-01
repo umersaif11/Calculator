@@ -56,5 +56,17 @@ container.addEventListener('click',(event) => {
     currentOperand = '';
     operator = event.target.value;
 
-}
+} else if (event.target.matches('.operator') && event.target.value === '='){
+    if(operator && (previousOperand !== null || currentOperand)){
+        let result = operate(operator, previousResult === null ? previousOperand : previousResult, parseFloat(currentOperand));
+        display.textContent = result;
+        currentOperand = '';
+        previousResult = null;
+        operator = null;
+        previousOperand = null;
+    } else {
+        display.textContent = 'Insufficient Operands';
+    }
+
+}    
 });
