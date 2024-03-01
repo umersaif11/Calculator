@@ -33,7 +33,8 @@ let operate = function(op,a,b){
             return 'Invalid operator';
     }
 }
-
+let operator;
+let currentOperand = '';
 
 
 const container = document.getElementById('container');
