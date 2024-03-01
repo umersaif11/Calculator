@@ -35,7 +35,7 @@ let operate = function(op,a,b){
 }
 let operator;
 let currentOperand = '';
-
+let previousOperand = null;
 
 const container = document.getElementById('container');
 const display = document.getElementById('display');
