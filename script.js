@@ -14,7 +14,6 @@ let divide = function(a,b) {
 	return a / b;
 };
 
-//function which takes operator and two operands
 let operate = function(op,a,b){
     switch (op){
         case '+':
@@ -57,16 +56,33 @@ container.addEventListener('click',(event) => {
     operator = event.target.value;
 
 } else if (event.target.matches('.operator') && event.target.value === '='){
-    if(operator && (previousOperand !== null || currentOperand)){
-        let result = operate(operator, previousResult === null ? previousOperand : previousResult, parseFloat(currentOperand));
-        display.textContent = result;
+    if(currentOperand && (previousOperand !== null)){
+        let result = operate(operator, previousOperand, parseFloat(currentOperand));
+        display.textContent = result.toFixed(3);
         currentOperand = '';
         previousResult = null;
         operator = null;
         previousOperand = null;
     } else {
         display.textContent = 'Insufficient Operands';
+        currentOperand = '';
+        previousResult = null;
+        operator = null;
+        previousOperand = null;
     }
 
-}    
+} else if(event.target.matches('#clear')) {
+    display.textContent = '0';
+    currentOperand = '';
+    previousOperand = null;
+    previousResult = null;
+    operator = null;
+}
 });
+
+
+
+       
+    
+    
+ 
